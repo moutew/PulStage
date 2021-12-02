@@ -1,5 +1,3 @@
-https://loxya-admin.vercel.app/login
-
 
 Next 12
 Prisma
