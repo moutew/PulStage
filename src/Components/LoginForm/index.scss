@@ -28,3 +28,13 @@ input {
     text-align: center;
     margin-top: 20px;
 }
+
+.disabled {
+    cursor: not-allowed !important;
+    background-color: lightgray !important;
+}
+
+.error {
+    margin: 30px;
+    color:red;
+}
