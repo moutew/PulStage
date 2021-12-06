@@ -23,8 +23,7 @@ const LoginForm: React.FC = () => {
             <h4>
                 {submitting
                     ? <span>In Progress ...</span>
-                    : <span>LoginMan</span>
-                }
+                    : <span>LoginMan</span>}
             </h4>
 
             <form onSubmit={handleSubmit}>
@@ -40,7 +39,7 @@ const LoginForm: React.FC = () => {
                     <input type="password" name="password" />
                 </div>
 
-                <button className="submit" type="submit">Entrer</button>
+                <button id="submit" type="submit">Entrer</button>
 
             </form>
         </div>

@@ -6,7 +6,6 @@ $bgColor: rgb(51, 102, 255);
 }
 
 input {
-    // border: 1px solid rgb(206, 90, 90);
     border-radius: 4px;
     height: 32px;
     padding: 0px 12px;
@@ -14,14 +13,12 @@ input {
     text-align: left;
 }
 
-.submit {
-    align-items: center;
+#submit {
     background-color: $bgColor;
     border-radius: 4px;
     box-sizing: border-box;
     color: rgb(255, 255, 255);
     cursor: pointer;
-    flex-wrap: nowrap;
     height: 40px;
     justify-content: center;
     min-width: 40px;
@@ -29,4 +26,5 @@ input {
     padding-right: 20px;
     position: relative;
     text-align: center;
+    margin-top: 20px;
 }

@@ -1,0 +1,44 @@
+
+@mixin flexItem($flexGrow) {
+
+}
+
+.mainContainer {
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.container {
+    border : 1px solid black;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    column-gap: 30px;
+    align-items: center;
+    align-content: center;
+
+    max-width: 200px;
+    min-height: 200px;
+    margin : 50px;
+
+    font-weight: 100;
+    font-size: 3em;
+}
+
+.item {
+    border : 1px solid black;
+    flex: 1 1 auto;
+    min-height: 100px;
+}
+
+.item2 {
+    border : 2px solid blue;
+    flex: 3 2 auto;
+    min-height: 100px;
+
+    &:hover {
+        background-color: rgb(180, 180, 180);
+        font-weight: bold;
+    }
+}
