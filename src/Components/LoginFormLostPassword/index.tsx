@@ -26,10 +26,11 @@ const LoginFormLostPassword: React.FC = () => {
                         }
                     }
                 />
+            </div>
+            <div className="center">
                 <button
-                    id="submit"
                     type="submit"
-                    className="pull-right"
+                    className="submit"
                 >
                     Confirmer
                 </button>

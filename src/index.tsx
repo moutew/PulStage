@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.scss';
 import App from './Components/App/index';
 import FlexTuto from './Components/FlexTuto';
 import reportWebVitals from './reportWebVitals';
