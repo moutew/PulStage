@@ -100,7 +100,7 @@ const LoginForm: React.FC = (props: { children?: React.ReactNode }) => {
                 </div>
 
                 <button
-                    className={`${!submittable || submitting ? 'disabled' : ''}`}
+                    className={`${!submittable || submitting ? 'disabled' : ''} `}
                     id="submit"
                     type="submit"
                     disabled={!submittable || submitting}
