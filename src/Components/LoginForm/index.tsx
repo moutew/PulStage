@@ -8,13 +8,20 @@ interface User {
     loxiaAdmin?: boolean;
 }
 
+interface LoginFormPropsInterface {
+    children?: React.ReactNode;
+    lostPassword: boolean;
+    setLostPassword: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 const users: User[] = [
     { name: 'Polo', pass: 'poiaze', loxiaAdmin: true },
     { name: 'Donovan', pass: 'poiaze', loxiaAdmin: true },
     { name: 'Moutew', pass: 'poiaze', loxiaAdmin: false },
 ];
 
-const LoginForm: React.FC = (props: { children?: React.ReactNode }) => {
+const LoginForm: React.FC<LoginFormPropsInterface> = (props) => {
+    const { setLostPassword, lostPassword } = props;
     const [submitting, setSubmitting] = useState(false);
     const [submittable, setSubmittable] = useState(false);
     const [identifiant, setIdentifiant] = useState('');
@@ -47,6 +54,8 @@ const LoginForm: React.FC = (props: { children?: React.ReactNode }) => {
 
     const canSubmit = (identifiant: string, password: string): boolean => identifiant.length > 3 && password.length > 3;
 
+    // @ WHY : typescript n'aime pas ça !
+    //
     // if (loggedUser !== null) {
     //     console.log(loggedUser);
     //     return (
@@ -71,6 +80,7 @@ const LoginForm: React.FC = (props: { children?: React.ReactNode }) => {
                         <input
                             type="text"
                             name="username"
+                            required
                             value={identifiant}
                             onChange={
                                 (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -89,6 +99,7 @@ const LoginForm: React.FC = (props: { children?: React.ReactNode }) => {
                         type="password"
                         name="password"
                         value={password}
+                        required
                         onChange={
                             (e: React.ChangeEvent<HTMLInputElement>) => {
                                 setPassword(e.target.value);
@@ -99,15 +110,18 @@ const LoginForm: React.FC = (props: { children?: React.ReactNode }) => {
                     />
                 </div>
 
-                <button
-                    className={`${!submittable || submitting ? 'disabled' : ''} `}
-                    id="submit"
-                    type="submit"
-                    disabled={!submittable || submitting}
-                >
-                    Entrer
-                </button>
-                {props.children}
+                <a className="pull-right" href="#" onClick={() => setLostPassword(! lostPassword)}>Mot de passe oublié ?</a>
+
+                <div className="center">
+                    <button
+                        className={`submit ${!submittable || submitting ? 'disabled' : ''}`}
+                        type="submit"
+                        disabled={!submittable || submitting}
+                    >
+                        Entrer
+                    </button>
+                </div>
+
             </form>
 
             <div className="error">
@@ -120,25 +134,10 @@ const LoginForm: React.FC = (props: { children?: React.ReactNode }) => {
 
 const LoginFormWrapper: React.FC = () => {
     const [lostPassword, setLostPassword] = useState(false);
-    if (lostPassword) {
-        return <LoginFormLostPassword />;
-    }
-    return (
-        <LoginForm>
-            <div className="pull-right">
-                <a href="#" onClick={() => setLostPassword(! lostPassword)}>Mot de passe oublié ? {lostPassword}</a>
-            </div>
-        </LoginForm>
-    );
 
-    // return (
-    //     <React.Fragment>
-    //         { lostPassword ? <LoginFormLostPassword /> : <LoginForm >
-    //             <a href="#" onClick={() => setLostPassword(! lostPassword)}>Mot de passe perdu ? {lostPassword}</a>
-    //         </LoginForm> }
-
-    //     </React.Fragment>
-    // );
+    return lostPassword
+        ? <LoginFormLostPassword />
+        : <LoginForm setLostPassword={setLostPassword} lostPassword={lostPassword} />;
 };
 
 export default LoginFormWrapper;
