@@ -1,6 +1,10 @@
 
 $bgColor: rgb(51, 102, 255);
 
+.loginForm {
+    min-width: 400px;
+}
+
 .form-label {
     padding: 3px;
 }
@@ -9,7 +13,8 @@ input {
     border-radius: 4px;
     height: 32px;
     padding: 0px 12px;
-    width: 100%;
+    width: 95%;
+    display: block;
     text-align: left;
 }
 
@@ -37,4 +42,8 @@ input {
 .error {
     margin: 30px;
     color:red;
+}
+
+.pull-right {
+    float:right;
 }

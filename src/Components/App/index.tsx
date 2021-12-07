@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './Loxya.svg';
 import './App.css';
-import LoginForm from '../LoginForm';
+import LoginFormWrapper from '../LoginForm';
 
 const App: React.FC = () => {
     let logged = false;
@@ -13,7 +13,7 @@ const App: React.FC = () => {
             </header>
 
             { !logged
-                ? <div className="App-loginScreen"><LoginForm /></div>
+                ? <div className="App-loginScreen"><LoginFormWrapper /></div>
                 : null }
 
         </div>

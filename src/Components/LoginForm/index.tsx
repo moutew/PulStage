@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './index.scss';
+import LoginFormLostPassword from '../LoginFormLostPassword';
 
 interface User {
     name: string;
@@ -13,7 +14,7 @@ const users: User[] = [
     { name: 'Moutew', pass: 'poiaze', loxiaAdmin: false },
 ];
 
-const LoginForm: React.FC = () => {
+const LoginForm: React.FC = (props: { children?: React.ReactNode }) => {
     const [submitting, setSubmitting] = useState(false);
     const [submittable, setSubmittable] = useState(false);
     const [identifiant, setIdentifiant] = useState('');
@@ -46,9 +47,17 @@ const LoginForm: React.FC = () => {
 
     const canSubmit = (identifiant: string, password: string): boolean => identifiant.length > 3 && password.length > 3;
 
+    // if (loggedUser !== null) {
+    //     console.log(loggedUser);
+    //     return (
+    //         <h1>Hello {loggedUser?.name}</h1>
+    //     );
+    // }
+
     return (
 
         <div className="loginForm">
+
             <h4>
                 {submitting
                     ? <span>In Progress ...</span>
@@ -98,7 +107,7 @@ const LoginForm: React.FC = () => {
                 >
                     Entrer
                 </button>
-
+                {props.children}
             </form>
 
             <div className="error">
@@ -109,4 +118,27 @@ const LoginForm: React.FC = () => {
     );
 };
 
-export default LoginForm;
+const LoginFormWrapper: React.FC = () => {
+    const [lostPassword, setLostPassword] = useState(false);
+    if (lostPassword) {
+        return <LoginFormLostPassword />;
+    }
+    return (
+        <LoginForm>
+            <div className="pull-right">
+                <a href="#" onClick={() => setLostPassword(! lostPassword)}>Mot de passe oublié ? {lostPassword}</a>
+            </div>
+        </LoginForm>
+    );
+
+    // return (
+    //     <React.Fragment>
+    //         { lostPassword ? <LoginFormLostPassword /> : <LoginForm >
+    //             <a href="#" onClick={() => setLostPassword(! lostPassword)}>Mot de passe perdu ? {lostPassword}</a>
+    //         </LoginForm> }
+
+    //     </React.Fragment>
+    // );
+};
+
+export default LoginFormWrapper;
