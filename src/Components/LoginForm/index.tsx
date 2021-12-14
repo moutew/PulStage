@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import './index.scss';
 import LoginFormLostPassword from '../LoginFormLostPassword';
+import InputText from '../InputText';
+import InputSubmit from '../InputSubmit';
 
-interface User {
-    name: string;
-    pass: string;
-    loxiaAdmin?: boolean;
-}
+type User = {
+    name: string,
+    pass: string,
+    loxiaAdmin?: boolean,
+};
 
-interface LoginFormPropsInterface {
-    children?: React.ReactNode;
-    lostPassword: boolean;
-    setLostPassword: React.Dispatch<React.SetStateAction<boolean>>;
-}
+type LoginFormPropsInterface = {
+    children?: React.ReactNode,
+    lostPassword: boolean,
+    setLostPassword: React.Dispatch<React.SetStateAction<boolean>>,
+};
 
 const users: User[] = [
     { name: 'Polo', pass: 'poiaze', loxiaAdmin: true },
@@ -20,10 +22,11 @@ const users: User[] = [
     { name: 'Moutew', pass: 'poiaze', loxiaAdmin: false },
 ];
 
-const LoginForm: React.FC<LoginFormPropsInterface> = (props) => {
+const canSubmit = (identifiant: string, password: string): boolean => identifiant.length > 3 && password.length > 3;
+
+const LoginForm = (props: LoginFormPropsInterface): JSX.Element => {
     const { setLostPassword, lostPassword } = props;
     const [submitting, setSubmitting] = useState(false);
-    const [submittable, setSubmittable] = useState(false);
     const [identifiant, setIdentifiant] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, seterrorMessage] = useState('');
@@ -52,17 +55,6 @@ const LoginForm: React.FC<LoginFormPropsInterface> = (props) => {
         return true;
     };
 
-    const canSubmit = (identifiant: string, password: string): boolean => identifiant.length > 3 && password.length > 3;
-
-    // @ WHY : typescript n'aime pas ça !
-    //
-    // if (loggedUser !== null) {
-    //     console.log(loggedUser);
-    //     return (
-    //         <h1>Hello {loggedUser?.name}</h1>
-    //     );
-    // }
-
     return (
 
         <div className="loginForm">
@@ -77,54 +69,27 @@ const LoginForm: React.FC<LoginFormPropsInterface> = (props) => {
                 <div className="form-label">
                     <label htmlFor="username">
                         Identifiant *
-                        <input
-                            type="text"
-                            name="username"
-                            required
-                            value={identifiant}
-                            onChange={
-                                (e: React.ChangeEvent<HTMLInputElement>) => {
-                                    setIdentifiant(e.target.value);
-                                    // @WHY ? identifiant n'a pas encore la valeur de e.target.value ?
-                                    setSubmittable(canSubmit(e.target.value, password));
-                                }
-                            }
-                        />
+                        <InputText onChange={setIdentifiant} value={identifiant} htmlType="text" />
                     </label>
                 </div>
 
                 <div className="form-label">
                     <label htmlFor="password">Mot de passe *</label>
-                    <input
-                        type="password"
-                        name="password"
-                        value={password}
-                        required
-                        onChange={
-                            (e: React.ChangeEvent<HTMLInputElement>) => {
-                                setPassword(e.target.value);
-                                // @WHY ? password n'a pas encore la valeur de e.target.value ?
-                                setSubmittable(canSubmit(identifiant, e.target.value));
-                            }
-                        }
-                    />
+                    <InputText onChange={setPassword} value={password} htmlType="password" />
                 </div>
 
-                <a className="pull-right" href="#" onClick={() => setLostPassword(! lostPassword)}>Mot de passe oublié ?</a>
+                <a className="LoginForm-pull-right" href="#" onClick={() => setLostPassword(! lostPassword)}>Mot de passe oublié ?</a>
 
                 <div className="center">
-                    <button
-                        className={`submit ${!submittable || submitting ? 'disabled' : ''}`}
-                        type="submit"
-                        disabled={!submittable || submitting}
-                    >
-                        Entrer
-                    </button>
+                    <InputSubmit
+                        disabled={!canSubmit(identifiant, password) || submitting}
+                        text="Se connecter"
+                    />
                 </div>
 
             </form>
 
-            <div className="error">
+            <div className="LoginForm-error">
                 {errorMessage}
             </div>
 

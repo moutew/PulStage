@@ -37,3 +37,13 @@ vscode
     - règles lintage air bnb
 
 sur github perso
+
+
+## State
+jotai / recoil
+
+context react
+
+## Router
+    - Dossier pages
+

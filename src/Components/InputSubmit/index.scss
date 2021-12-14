@@ -1,0 +1,23 @@
+
+@use '../../colors';
+
+.InputSubmit {
+    background-color: colors.$buttonColorDefault;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    height: 40px;
+    justify-content: center;
+    min-width: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    position: relative;
+    text-align: center;
+    margin-top: 20px;
+
+    &-disabled {
+        cursor: not-allowed !important;
+        background-color: lightgray !important;
+    }
+}

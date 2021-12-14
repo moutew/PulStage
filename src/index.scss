@@ -1,5 +1,5 @@
 
-$bgColor: rgb(51, 102, 255);
+
 
 body {
     margin: 0;
@@ -28,40 +28,6 @@ code {
         Consolas,
         'Courier New',
         monospace;
-}
-
-.form-label {
-    padding: 3px;
-}
-
-input {
-    border-radius: 4px;
-    height: 32px;
-    padding: 0px 12px;
-    width: 95%;
-    display: block;
-    text-align: left;
-}
-
-.submit {
-    background-color: $bgColor;
-    border-radius: 4px;
-    box-sizing: border-box;
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-    height: 40px;
-    justify-content: center;
-    min-width: 40px;
-    padding-left: 20px;
-    padding-right: 20px;
-    position: relative;
-    text-align: center;
-    margin-top: 20px;
-}
-
-.disabled {
-    cursor: not-allowed !important;
-    background-color: lightgray !important;
 }
 
 .center {

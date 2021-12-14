@@ -1,5 +1,7 @@
 import './index.scss';
 import React, { useState } from 'react';
+import InputSubmit from '../InputSubmit';
+import InputText from '../InputText';
 
 const LoginFormLostPassword: React.FC = () => {
     const [email, setEmail] = useState('');
@@ -14,26 +16,16 @@ const LoginFormLostPassword: React.FC = () => {
 
             <div className="form-label">
                 <label htmlFor="emailAdress">Entrez votre adresse email *</label>
-                <input
-                    type="email"
-                    name="email"
-                    value={email}
-                    placeholder="exemple@exemple.fr"
-                    required
-                    onChange={
-                        (e: React.ChangeEvent<HTMLInputElement>) => {
-                            setEmail(e.target.value);
-                        }
-                    }
+                <InputText
+                    onChange={setEmail}
                 />
             </div>
+
             <div className="center">
-                <button
-                    type="submit"
-                    className="submit"
-                >
-                    Confirmer
-                </button>
+                <InputSubmit
+                    text="Réinitialiser le mot de passe"
+                    disabled={false}
+                />
             </div>
         </form>
     );

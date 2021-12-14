@@ -1,14 +1,14 @@
 
-.loginForm {
+.LoginForm {
     min-width: 400px;
 
-    .error {
+    &-error {
         margin-top: 30px;
         text-align: center;
         color:red;
     }
 
-    .pull-right {
+    &-pull-right {
         float:right;
     }
 }
