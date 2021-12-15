@@ -3,17 +3,12 @@ import './index.scss';
 import LoginFormLostPassword from '../LoginFormLostPassword';
 import InputText from '../InputText';
 import InputSubmit from '../InputSubmit';
+import { Link, Route, useParams, useRouteMatch, BrowserRouter } from "react-router-dom";
 
 type User = {
     name: string,
     pass: string,
     loxiaAdmin?: boolean,
-};
-
-type LoginFormPropsInterface = {
-    children?: React.ReactNode,
-    lostPassword: boolean,
-    setLostPassword: React.Dispatch<React.SetStateAction<boolean>>,
 };
 
 const users: User[] = [
@@ -24,13 +19,13 @@ const users: User[] = [
 
 const canSubmit = (identifiant: string, password: string): boolean => identifiant.length > 3 && password.length > 3;
 
-const LoginForm = (props: LoginFormPropsInterface): JSX.Element => {
-    const { setLostPassword, lostPassword } = props;
+const LoginForm = (): JSX.Element => {
     const [submitting, setSubmitting] = useState(false);
     const [identifiant, setIdentifiant] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, seterrorMessage] = useState('');
     const [loggedUser, setloggedUser] = useState<null | User>(null);
+    const { url, path } = useRouteMatch();
 
     const handleSubmit = (event: React.FormEvent): boolean => {
         event.preventDefault();
@@ -58,7 +53,6 @@ const LoginForm = (props: LoginFormPropsInterface): JSX.Element => {
     return (
 
         <div className="loginForm">
-
             <h4>
                 {submitting
                     ? <span>In Progress ...</span>
@@ -78,7 +72,10 @@ const LoginForm = (props: LoginFormPropsInterface): JSX.Element => {
                     <InputText onChange={setPassword} value={password} htmlType="password" />
                 </div>
 
-                <a className="LoginForm-pull-right" href="#" onClick={() => setLostPassword(! lostPassword)}>Mot de passe oublié ?</a>
+                {/* <a className="LoginForm-pull-right" href="#" onClick={() => setLostPassword(! lostPassword)}>Mot de passe oublié ?</a> */}
+                <Link to={`${url}/lostPassword`} className="LoginForm-pull-right">
+                    Mot de passe oublié ?
+                </Link>
 
                 <div className="center">
                     <InputSubmit
@@ -97,12 +94,4 @@ const LoginForm = (props: LoginFormPropsInterface): JSX.Element => {
     );
 };
 
-const LoginFormWrapper: React.FC = () => {
-    const [lostPassword, setLostPassword] = useState(false);
-
-    return lostPassword
-        ? <LoginFormLostPassword />
-        : <LoginForm setLostPassword={setLostPassword} lostPassword={lostPassword} />;
-};
-
-export default LoginFormWrapper;
+export default LoginForm;

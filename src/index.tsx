@@ -2,8 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './Components/App/index';
-import FlexTuto from './Components/FlexTuto';
+
 import reportWebVitals from './reportWebVitals';
+// import Login from './Login';
+
+// https://stackoverflow.com/questions/47747754/how-to-rewrite-the-protected-private-route-using-typescript-and-react-router-4
+
 
 ReactDOM.render(
     <React.StrictMode>

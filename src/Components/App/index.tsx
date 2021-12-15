@@ -1,24 +1,37 @@
+import './App.scss';
 import React from 'react';
 import logo from './Loxya.svg';
-import './App.scss';
-import LoginFormWrapper from '../LoginForm';
-import FlexTuto from '../FlexTuto';
+import { Link, Route, useParams, useRouteMatch, BrowserRouter } from "react-router-dom";
 
-const App: React.FC = () => {
+import LoginPage from '../../Pages/LoginPage';
+
+const App = (): JSX.Element => {
     let logged = false;
 
     return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p className="userMenu">How do you do</p>
-            </header>
+        <BrowserRouter>
+            <div className="App">
+                <header className="App-header">
+                    <Link to="/">
+                        <img src={logo} className="App-logo" alt="logo" />
+                    </Link>
 
-            { !logged && <div className="App-Screen"><LoginFormWrapper /></div> }
+                    <p className="userMenu">How do you do</p>
+                </header>
+            </div>
 
-            { logged && <div className="App-Screen"><FlexTuto /></div>}
+            <div className="App-Screen">
+                    <Route exact path="/">
+                        <h1>Welcome</h1>
 
-        </div>
+                        <p><Link to="/login">Se connecter</Link></p>
+                    </Route>
+                    <Route path="/login">
+                        <LoginPage />
+                    </Route>
+
+            </div>
+        </BrowserRouter>
     );
 };
 
