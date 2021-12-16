@@ -1,0 +1,23 @@
+
+.FullScreenLayout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    &-content {
+        flex: 1 1 auto;
+        width: 100vw;
+        height: 95vh;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &-copyright {
+        flex: 1 1 auto;
+        // border: 1px solid black;
+        // height: 5vh;
+    }
+}

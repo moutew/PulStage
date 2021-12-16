@@ -1,0 +1,36 @@
+.NavLeftLayout {
+
+    $padding : 10px;
+
+    // background-color: mediumslateblue;
+
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    &-container {
+        flex: 1;
+        display: flex;
+    }
+
+    &-container {
+        padding-top: 30px;
+        overflow: scroll;
+        // min-width: 98vw;
+    }
+
+    &-navigation {
+        padding: $padding;
+        border-right: 3px dashed black;
+        width: 300px; /* 0 width - change this with JavaScript */
+        // position: fixed; /* Stay in place */
+        overflow-x: hidden; /* Disable horizontal scroll */
+    }
+
+    &-content {
+        padding: $padding;
+        // background-color: mediumslateblue;
+        // width: calc(100vw - 300px);
+        flex: 1;
+    }
+}
