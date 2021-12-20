@@ -1,34 +1,36 @@
 import React from 'react';
 import Category from '../../Category';
 import FlexTuto from '../../Components/FlexTuto';
-import NavLeftLayout from '../../Components/Layouts/NavLeftLayout';
 import Products from '../../Products';
+import NavLeftLayout from '../../Components/Layouts/NavLeftLayout';
+import type { RouteProps } from 'react-router-dom';
 
-export type RouteType = {
+export type RouteType = RouteProps & {
     name: string,
-    path: string,
-    exact: boolean,
-    children: JSX.Element,
+    to: string,
 };
 
 const routes: RouteType[] = [
     {
         name: 'Flex-Tuto',
         path: '/admin/',
+        to: '/admin/',
         exact: true,
-        children: <FlexTuto />,
+        component: FlexTuto,
     },
     {
         name: 'Categories',
         exact: false,
         path: '/admin/categories',
-        children: <Category />,
+        to: '/admin/categories',
+        component: Category,
     },
     {
         name: 'Produits',
         path: '/admin/products',
+        to: '/admin/products',
         exact: false,
-        children: <Products />,
+        component: Products,
     },
 ];
 

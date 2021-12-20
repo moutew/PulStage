@@ -1,15 +1,12 @@
-$header-height:10vmin;
+$header-height: 80px;
 $padding: 10px;
 .header {
-    height: $header-height;
-    width: 100vw;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
     font-size: calc(10px + 2vmin);
     color: black;
-    // margin-top: 10px;
+
 
     &-logo {
         height: $header-height;

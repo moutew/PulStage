@@ -17,7 +17,7 @@ const NavLeftLayout = ({ routes }: { routes: RouteType[] }): JSX.Element => (
                 <ul>
                     {routes.map((route: RouteType) => (
                         <li key={`link-${route.name}`}>
-                            <Link to={route.path}>
+                            <Link to={route.to}>
                                 {route.name}
                             </Link>
                         </li>
@@ -27,10 +27,8 @@ const NavLeftLayout = ({ routes }: { routes: RouteType[] }): JSX.Element => (
 
             <div className="NavLeftLayout-content">
 
-                { routes.map((route) => (
-                    <Route key={`route-${route.name}`} path={route.path} exact={route.exact}>
-                        {route.children}
-                    </Route>
+                { routes.map(({ name, ...routeProps }: RouteType) => (
+                    <Route key={`route-${name}`} {...routeProps} />
                 ))}
 
             </div>

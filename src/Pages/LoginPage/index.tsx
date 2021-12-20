@@ -8,17 +8,15 @@ const LoginPage = (): JSX.Element => {
     const { url, path } = useRouteMatch();
 
     return (
-        <FullScreenLayout>
-            <BrowserRouter>
-                <Route exact path={`${url}`}>
-                    <LoginForm />
-                </Route>
+        <BrowserRouter>
+            <Route exact path={`${url}`}>
+                <LoginForm />
+            </Route>
 
-                <Route path={`${url}/lostPassword`}>
-                    <LoginFormLostPassword />
-                </Route>
-            </BrowserRouter>
-        </FullScreenLayout>
+            <Route path={`${url}/lostPassword`}>
+                <LoginFormLostPassword />
+            </Route>
+        </BrowserRouter>
     );
 };
 

@@ -1,0 +1,8 @@
+.MenuAdminSidebar {
+    display: flex;
+    flex-flow: column wrap;
+
+    &-menuItem {
+        padding-top: 10px;
+    }
+}
