@@ -3,13 +3,9 @@
     $padding : 10px;
 
     display: flex;
-    flex-wrap: wrap;
-    flex-basis: auto;
-
+    flex-direction: column;
     height: 100%;
     width: 100%;
-
-    padding: $padding;
 
     &-header {
         width: 100%;
@@ -18,13 +14,14 @@
     &-content {
         display: flex;
         flex-flow: row;
+        flex-grow: 1;
         width: 100%;
     }
 
     &-navigation {
         padding: $padding;
         border-right: 3px dashed black;
-        width: 25%;
+        width: 10%;
     }
 
     &-page {
@@ -33,7 +30,7 @@
     }
 
     &-props {
-        width: 25%;
+        width: 15%;
         background-color:lightpink;
         padding: $padding;
     }
